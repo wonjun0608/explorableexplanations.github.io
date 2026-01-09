@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Casino Always Wins Simulator</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Chart.js via CDN (no build, no install) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="chip">🎰</div>
+      <div>
+        <div class="title">Casino Always Wins Simulator</div>
+        <div class="subtitle">Feel the Law of Large Numbers & negative EV in your wallet.</div>
+      </div>
+    </div>
+
+    <div class="status">
+      <div class="statusCard">
+        <div class="label">Balance</div>
+        <div class="value" id="balance">$1,000</div>
+      </div>
+      <div class="statusCard">
+        <div class="label">Rounds</div>
+        <div class="value" id="rounds">0</div>
+      </div>
+      <div class="statusCard">
+        <div class="label">Avg profit / round</div>
+        <div class="value" id="avgProfit">$0.00</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel">
+      <div class="panelHeader">
+        <h2>Table Settings</h2>
+        <p class="muted">Looks fair. Isn’t fair.</p>
+      </div>
+
+      <div class="grid">
+        <label class="field">
+          <span>Starting bankroll</span>
+          <input id="startingBankroll" type="number" min="1" step="1" value="1000" />
+        </label>
+
+        <label class="field">
+          <span>Win probability (p)</span>
+          <input id="pWin" type="number" min="0" max="1" step="0.001" value="0.495" />
+          <small class="hint">Try 0.5 to see a “fair” game.</small>
+        </label>
+
+        <label class="field">
+          <span>Payout (win gets)</span>
+          <input id="payout" type="number" min="0" step="0.01" value="1.00" />
+          <small class="hint">1.00 means win = +bet. 0.98 mimics house rules.</small>
+        </label>
+
+        <label class="field">
+          <span>Base bet</span>
+          <input id="baseBet" type="number" min="1" step="1" value="10" />
+        </label>
+
+        <label class="field">
+          <span>Table max bet</span>
+          <input id="maxBet" type="number" min="1" step="1" value="500" />
+          <small class="hint">Max bet is what breaks “always win eventually” strategies.</small>
+        </label>
+
+        <label class="field">
+          <span>Strategy</span>
+          <select id="strategy">
+            <option value="flat">Flat (constant bet)</option>
+            <option value="martingale">Martingale (double after loss)</option>
+            <option value="random">Random (1..baseBet)</option>
+            <option value="proportional">Proportional (2% bankroll)</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Auto-play rounds</span>
+          <input id="autoRounds" type="number" min="1" step="1" value="500" />
+        </label>
+
+        <label class="field">
+          <span>Monte Carlo sims (ruin)</span>
+          <input id="mcSims" type="number" min="10" step="10" value="300" />
+        </label>
+
+        <label class="field">
+          <span>MC horizon (rounds each)</span>
+          <input id="mcHorizon" type="number" min="10" step="10" value="2000" />
+        </label>
+      </div>
+
+      <div class="buttons">
+        <button class="btn primary" id="btnReset">Reset</button>
+        <button class="btn" id="btnOne">Play 1 round</button>
+        <button class="btn" id="btnAuto">Auto-play</button>
+        <button class="btn danger" id="btnStop" disabled>Stop</button>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="buttons">
+        <button class="btn gold" id="btnMC">Run Monte Carlo (ruin odds)</button>
+      </div>
+
+      <div class="mcBox">
+        <div class="mcRow">
+          <div class="label">Ruin probability</div>
+          <div class="value" id="ruinProb">—</div>
+        </div>
+        <div class="mcRow">
+          <div class="label">Avg rounds to ruin (ruined only)</div>
+          <div class="value" id="ruinTime">—</div>
+        </div>
+        <div class="progressWrap">
+          <div class="progressBar" id="mcProgress"></div>
+        </div>
+        <small class="hint">Monte Carlo shows “chance of disaster” your single run might hide.</small>
+      </div>
+
+      <div class="note">
+        <h3>What this demonstrates</h3>
+        <ul>
+          <li><b>Negative EV</b>: with p &lt; 0.5 (or payout &lt; 1), each bet has negative expectation.</li>
+          <li><b>Law of Large Numbers</b>: average profit per round converges toward the expected value.</li>
+          <li><b>Risk of ruin</b>: “safe-looking” strategies can hide rare but catastrophic losses.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="charts">
+      <div class="chartCard">
+        <div class="chartHeader">
+          <h2>Balance</h2>
+          <p class="muted">Up and down… but long-run drift shows up.</p>
+        </div>
+        <canvas id="balanceChart"></canvas>
+      </div>
+
+      <div class="chartCard">
+        <div class="chartHeader">
+          <h2>Average Profit per Round (LLN)</h2>
+          <p class="muted">As rounds increase, this tends to the expected value.</p>
+        </div>
+        <canvas id="avgChart"></canvas>
+      </div>
+
+      <div class="chartCard">
+        <div class="chartHeader">
+          <h2>Monte Carlo: Final Bankroll Distribution</h2>
+          <p class="muted">Many worlds. Same house edge.</p>
+        </div>
+        <canvas id="distChart"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    Tip: set <b>p = 0.5</b> and <b>payout = 1.00</b> → your avg profit per round should hover near 0.
+    Then set <b>p = 0.495</b> → watch it converge below 0 as you play more.
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
