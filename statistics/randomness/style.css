@@ -1,0 +1,97 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .card {
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 16px;
+    padding: 24px 28px 28px;
+    width: 680px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  }
+  
+  h1 {
+    margin: 0;
+    text-align: center;
+    font-size: 2rem;
+  }
+  
+  .subtitle {
+    text-align: center;
+    opacity: 0.85;
+    margin-bottom: 20px;
+  }
+  
+  .controls {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 6px;
+  }
+  
+  input[type="range"] {
+    width: 100%;
+  }
+  
+  .buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  
+  button {
+    flex: 1;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background: #00e676;
+    color: #000;
+    font-weight: 600;
+    transition: transform 0.1s, box-shadow 0.1s;
+  }
+  
+  button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  }
+  
+  button.secondary {
+    background: #ff5252;
+    color: #fff;
+  }
+  
+  .stats {
+    margin-top: 12px;
+    font-size: 0.95rem;
+    opacity: 0.9;
+  }
+  
+  canvas {
+    display: block;
+    margin: 0 auto;
+    background: #111;
+    border-radius: 10px;
+  }
+  
+  .hint {
+    margin-top: 12px;
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+  

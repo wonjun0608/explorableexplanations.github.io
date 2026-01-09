@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Why Does Randomness Stabilize?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="card">
+  <h1>🎲 Randomness → Order</h1>
+  <p class="subtitle">
+    Run experiments and watch randomness stabilize into a pattern.
+  </p>
+
+  <div class="controls">
+    <label>
+      Sample size per experiment:
+      <span id="sampleValue">5</span>
+    </label>
+
+    <input type="range" id="sampleSize" min="1" max="100" value="5">
+
+    <div class="buttons">
+      <button id="run">▶ Run experiment</button>
+      <button id="reset" class="secondary">⟳ Reset</button>
+    </div>
+
+    <div class="stats">
+      Experiments run: <b><span id="runCount">0</span></b>
+      <br>
+      Mean value: <b><span id="meanValue">–</span></b>
+    </div>
+  </div>
+
+  <canvas id="histogram" width="600" height="300"></canvas>
+
+  <p class="hint">
+    💡 As the number of experiments increases, the distribution becomes smoother.
+  </p>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
