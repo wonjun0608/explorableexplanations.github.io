@@ -1,8 +1,6 @@
 [
 
-	/////////////////////////////
-	// THE EXPLORABLE TAGS //////
-	/////////////////////////////
+
 	
 	{
 		"id": "philosophy",
@@ -96,9 +94,6 @@
 	},
 
 
-	/////////////////////////////
-	// THE NON-EXPLORABLE TAGS //
-	/////////////////////////////
 
 	{
 		"id": "tools",
@@ -123,6 +118,12 @@
 		"name": "frequently asked questions",
 		"color": "#222",
 		"explorable": false
+	},
+	{
+		"id": "statistics",
+		"name": "statistics",
+		"color": "#3a7bd5",
+		"explorable": true
 	}
 
 
