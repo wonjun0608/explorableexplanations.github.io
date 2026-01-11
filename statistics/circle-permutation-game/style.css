@@ -1,0 +1,136 @@
+* {
+    box-sizing: border-box;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  
+  body {
+    margin: 0;
+    background: linear-gradient(#4b6cb7, #182848);
+    color: white;
+    text-align: center;
+  }
+  
+  header.top {
+    padding: 20px;
+    background: rgba(0,0,0,0.25);
+  }
+  
+  header h1 {
+    margin: 0;
+    font-size: 2.2em;
+  }
+  
+  header p {
+    opacity: 0.85;
+  }
+  
+  .controls {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 15px 0;
+  }
+  
+  .control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .control button {
+    background: #ffd166;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 1em;
+    cursor: pointer;
+  }
+  
+  main {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 30px;
+    flex-wrap: wrap;
+  }
+  
+  .scene {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle at center, #ffdd99, #cc6600);
+    border-radius: 50%;
+    box-shadow: 0 0 40px rgba(255,200,100,0.6);
+  }
+  
+  .fire {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3em;
+  }
+  
+  #circle {
+    position: absolute;
+    inset: 0;
+  }
+  
+  .character {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    background: white;
+    color: black;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8em;
+    cursor: grab;
+    user-select: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  }
+  
+  .panel {
+    max-width: 300px;
+    background: rgba(255,255,255,0.15);
+    padding: 20px;
+    border-radius: 16px;
+    backdrop-filter: blur(8px);
+  }
+  
+  .answers {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 15px 0;
+  }
+  
+  .answer {
+    background: #06d6a0;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 1em;
+    cursor: pointer;
+  }
+  
+  .answer:last-child {
+    background: #ef476f;
+  }
+  
+  .feedback {
+    min-height: 24px;
+    font-weight: bold;
+  }
+  
+  .counter {
+    margin-top: 10px;
+  }
+  
+  footer {
+    opacity: 0.7;
+    padding: 15px;
+  }
+  

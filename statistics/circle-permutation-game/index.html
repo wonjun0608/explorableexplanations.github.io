@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Circle Seating Puzzle</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="top">
+  <h1>🔥 Circle Seating Puzzle</h1>
+  <p>Arrange characters around the campfire.<br>
+     Decide whether an arrangement is truly new — or just rotated.</p>
+</header>
+
+<section class="controls">
+  <div class="control">
+    <label>Characters</label>
+    <button id="minus">−</button>
+    <span id="count">4</span>
+    <button id="plus">+</button>
+  </div>
+
+  <div class="control">
+    <button id="rotate">🔄 Rotate Circle</button>
+    <button id="random">🎲 Random Seating</button>
+  </div>
+</section>
+
+<main>
+  <div class="scene">
+    <div class="fire">🔥</div>
+    <div id="circle"></div>
+  </div>
+
+  <div class="panel">
+    <p><strong>Question:</strong></p>
+    <p>Is this arrangement genuinely new?</p>
+    <div class="answers">
+      <button class="answer" data-answer="new">🆕 New</button>
+      <button class="answer" data-answer="same">🔁 Same</button>
+    </div>
+
+    <p class="feedback" id="feedback"></p>
+    <p class="counter">
+      Unique arrangements found:
+      <span id="unique">0</span>
+    </p>
+  </div>
+</main>
+
+<footer>
+  <p>Hint: Rotating everyone together might not change anything.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

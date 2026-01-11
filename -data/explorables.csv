@@ -181,6 +181,11 @@
 "Marvin Minsky and The Ultimate TinkerToy","An essay on the legacy of Marvin Minsky with programmable interactive simulations","https://tinlizzie.org/tinkertoy/","ultimate-tinkertoy.png","biology,programming","","Alan Kay, John Maloney and Yoshiki Ohshima"
 "Why Casino always Wins","An intuitive, game-based explanation of why players lose in the long run at casinos","https://newpittsburghcourier.com/2026/01/08/the-science-of-the-casino-why-the-house-always-wins-in-the-long-run/","expected_value_gambling.png","probability, statistics, expected value, risk","",""
 "Gambling Simulator Game for statistics","Play a gambling game and watch how small disadvantages add up, showing why the casino wins in the long run","statistics/casino-ev-game/","gambling.png","probability, statistics, expected value","",""
+"Circle Seating Puzzle","Play a visual puzzle where you seat characters in a circle and learn to spot when arrangements are the same under rotation.","statistics/circle-permutation-game/","circle.png","statistics, math","",""
 "Why Does Randomness Stabilize?","increase sample size and watch randomness converge into order","/statistics/randomness/","statistics.png","statistics","yes","Wonjun Kim"
+
+
+
+
 
 
